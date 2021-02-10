@@ -4,7 +4,7 @@ import Card from './components/Card'
 import createElement from './lib/createElement'
 
 export default function App() {
-  const header = AppHeader('Harry Potter App')
+  const header = AppHeader('Daily Prophet')
   document.body.append(header)
 
   getCharacters()
@@ -12,7 +12,9 @@ export default function App() {
     .catch(error => handleGetCharacterError(error))
 
   function createCards(characters) {
-    const cards = characters.map(character => Card(character.name))
+    const cards = characters.map(character =>
+      Card(character.image, character.name, character.house)
+    )
     document.body.append(...cards)
   }
 

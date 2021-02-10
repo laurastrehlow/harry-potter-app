@@ -1,14 +1,28 @@
 import './Card.css'
+import Button from '../Button'
 import createElement from '../../lib/createElement'
 
-export default function Card(imageUrl, name, house) {
+export default function Card(imageUrl, name, house, species, gender) {
   const Card = createElement(
     'section',
     { className: 'Card' },
     imageUrl,
     name,
-    house
+    house,
+    species,
+    gender
   )
+  const buttonEl = Button('Show more information')
+  const moreInformation = createElement('p', {
+    className: 'moreInformation',
+    hidden: true,
+    innerText: 'Species:' + ' ' + species + '\n' + 'Gender:' + ' ' + gender,
+  })
+
+  buttonEl.addEventListener('click', () => {
+    moreInformation.hidden = !moreInformation.hidden
+  })
+
   Card.style.background = getBackgroundColorByHouse(house)
   Card.style.color = getColorByHouse(house)
   Card.innerHTML = `
@@ -22,6 +36,7 @@ export default function Card(imageUrl, name, house) {
     if (house === 'Slytherin') return '#033807'
     if (house === 'Hufflepuff') return '#e3a000'
     if (house === 'Ravenclaw') return '#00165e'
+    if (house === '') return '#CCC'
   }
 
   function getColorByHouse(house) {
@@ -29,6 +44,16 @@ export default function Card(imageUrl, name, house) {
     if (house === 'Slytherin') return '#AAAAAA'
     if (house === 'Hufflepuff') return 'black'
     if (house === 'Ravenclaw') return '#946B2D'
+    if (house === '') return '#000'
   }
-  return Card
+
+  const el = createElement(
+    'section',
+    { className: 'Card' },
+    Card,
+    buttonEl,
+    moreInformation
+  )
+
+  return el
 }

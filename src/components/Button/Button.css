@@ -1,9 +1,10 @@
 .Button {
   margin: 10px auto;
   padding: 15px 20px;
-  background: darkgoldenrod;
+  background: url('../styles/images/harry.potter.jpg');
+  font-family: 'Parisienne', cursive;
   color: white;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 8px 12px #182063;
+  box-shadow: 0 8px 12px lightgoldenrodyellow;
 }

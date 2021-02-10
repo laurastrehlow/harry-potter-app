@@ -13,7 +13,13 @@ export default function App() {
 
   function createCards(characters) {
     const cards = characters.map(character =>
-      Card(character.image, character.name, character.house)
+      Card(
+        character.image,
+        character.name,
+        character.house,
+        character.species,
+        character.gender
+      )
     )
     document.body.append(...cards)
   }

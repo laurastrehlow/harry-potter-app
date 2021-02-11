@@ -1,8 +1,15 @@
 .Card {
-  color: var(--color-primary);
-  background-color: #eee;
+  color: darkred;
+  font-weight: 900;
+  background: none;
   padding: 20px;
   margin: 20px;
   text-align: center;
   border-radius: 15px;
+}
+
+.Card__button {
+  background: url('../styles/images/harry.potter.jpg');
+  border-radius: 15px;
+  margin: 0 20px;
 }

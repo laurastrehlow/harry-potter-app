@@ -7,8 +7,22 @@ export default function Card(imageUrl, name, house, species, gender) {
     { className: 'Card' },
     imageUrl,
     name,
-    house
+    house,
+    species,
+    gender
   )
+  const buttonEl = createElement('button', {
+    className: 'Button',
+    innerText: 'Show more Information',
+  })
+  buttonEl.addEventListener('click', () => {
+    moreInformation.hidden = !moreInformation.hidden
+  })
+  const moreInformation = createElement('p', {
+    className: 'moreInformation',
+    hidden: true,
+    innerText: 'Species:' + ' ' + species + '\n' + 'Gender:' + ' ' + gender,
+  })
 
   Card.style.background = getBackgroundColorByHouse(house)
   Card.style.color = getColorByHouse(house)
@@ -34,7 +48,13 @@ export default function Card(imageUrl, name, house, species, gender) {
     if (house === '') return '#000'
   }
 
-  const el = createElement('section', { className: 'Card' }, Card)
+  const el = createElement(
+    'section',
+    { className: 'Card' },
+    Card,
+    buttonEl,
+    moreInformation
+  )
 
   return el
 }

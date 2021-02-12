@@ -1,5 +1,4 @@
 import './Card.css'
-import Button from '../Button'
 import createElement from '../../lib/createElement'
 
 export default function Card(imageUrl, name, house, species, gender) {
@@ -8,20 +7,8 @@ export default function Card(imageUrl, name, house, species, gender) {
     { className: 'Card' },
     imageUrl,
     name,
-    house,
-    species,
-    gender
+    house
   )
-  const buttonEl = Button('Show more information')
-  const moreInformation = createElement('p', {
-    className: 'moreInformation',
-    hidden: true,
-    innerText: 'Species:' + ' ' + species + '\n' + 'Gender:' + ' ' + gender,
-  })
-
-  buttonEl.addEventListener('click', () => {
-    moreInformation.hidden = !moreInformation.hidden
-  })
 
   Card.style.background = getBackgroundColorByHouse(house)
   Card.style.color = getColorByHouse(house)
@@ -47,13 +34,7 @@ export default function Card(imageUrl, name, house, species, gender) {
     if (house === '') return '#000'
   }
 
-  const el = createElement(
-    'section',
-    { className: 'Card' },
-    Card,
-    buttonEl,
-    moreInformation
-  )
+  const el = createElement('section', { className: 'Card' }, Card)
 
   return el
 }

@@ -8,6 +8,7 @@ module.exports = {
     src: '/',
   },
   optimize: {
+    bundle: true,
     minify: true,
     target: 'es2017',
   },
